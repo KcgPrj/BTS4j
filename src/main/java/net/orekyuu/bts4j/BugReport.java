@@ -14,7 +14,7 @@ public final class BugReport {
     private final String log;
     private final String runtimeInfo;
 
-    protected BugReport(String title, String description, String version, String stacktrace, String log, String runtimeInfo) {
+    protected BugReport( String title, String description, String version, String stacktrace, String log, String runtimeInfo) {
         this.title = title;
         this.description = description;
         this.version = version;
