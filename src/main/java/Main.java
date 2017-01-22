@@ -25,7 +25,6 @@ public class Main {
                             .title(e.getClass().getName())
                             .description("")
                             .log("")
-                            .assignUserId(1)
                             .stacktrace(stacktrace)
                             .runtimeInfo(System.getProperty("os.name"))
                             .version("1.0.0")
