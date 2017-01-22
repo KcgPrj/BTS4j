@@ -65,6 +65,6 @@ public final class BugReportBuilder {
     }
 
     private String escape(String str) {
-        return str.replace("\n", "\\\\n").replace("\t", "\\\\t");
+        return str.replace("\n", "\\n").replace("\t", "\\t");
     }
 }
