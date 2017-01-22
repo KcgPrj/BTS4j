@@ -5,12 +5,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 final class SimpleBugReportService implements BugReportService {
 
     private final String url;
     private final String productToken;
-    private static final String REPORT_API_PATH = "/report/create";
+    private static final String REPORT_API_PATH = "open/api/report";
 
     SimpleBugReportService(String url, String productToken) {
         if (url == null) {
@@ -35,12 +36,20 @@ final class SimpleBugReportService implements BugReportService {
             URL url = new URL(this.url + REPORT_API_PATH);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setDoOutput(true);
+            connection.setDoInput(true);
 
             String body = BugReportJsonFormatter.format(report, productToken);
 
             OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
             writer.write(body);
             writer.flush();
+
+            Scanner scanner = new Scanner(connection.getInputStream());
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
 
         } catch (MalformedURLException e) {
             throw new BugReportException(e);

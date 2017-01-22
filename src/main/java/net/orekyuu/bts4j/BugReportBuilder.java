@@ -37,7 +37,7 @@ public final class BugReportBuilder {
     }
 
     public BugReportBuilder stacktrace(String stacktrace) {
-        this.stacktrace = stacktrace;
+        this.stacktrace = escape(stacktrace);
         return this;
     }
 
@@ -62,5 +62,9 @@ public final class BugReportBuilder {
 
     public BugReport build() {
         return new BugReport(assignUserId, title, description, version, stacktrace, log, runtimeInfo);
+    }
+
+    private String escape(String str) {
+        return str.replace("\n", "\\\\n").replace("\t", "\\\\t");
     }
 }
