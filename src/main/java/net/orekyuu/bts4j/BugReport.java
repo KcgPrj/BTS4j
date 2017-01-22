@@ -2,6 +2,7 @@ package net.orekyuu.bts4j;
 
 /**
  * バグレポートを表すクラスです
+ *
  * @see {@link BugReportBuilder}
  */
 public final class BugReport {
@@ -21,7 +22,6 @@ public final class BugReport {
         this.log = log;
         this.runtimeInfo = runtimeInfo;
     }
-
 
     public String getTitle() {
         return title;
