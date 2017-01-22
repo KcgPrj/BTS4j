@@ -6,7 +6,6 @@ package net.orekyuu.bts4j;
  */
 public final class BugReport {
 
-    private final int assignUserId;
     private final String title;
     private final String description;
     private final String version;
@@ -14,8 +13,7 @@ public final class BugReport {
     private final String log;
     private final String runtimeInfo;
 
-    protected BugReport(int assignUserId, String title, String description, String version, String stacktrace, String log, String runtimeInfo) {
-        this.assignUserId = assignUserId;
+    protected BugReport( String title, String description, String version, String stacktrace, String log, String runtimeInfo) {
         this.title = title;
         this.description = description;
         this.version = version;
@@ -24,9 +22,6 @@ public final class BugReport {
         this.runtimeInfo = runtimeInfo;
     }
 
-    public int getAssignUserId() {
-        return assignUserId;
-    }
 
     public String getTitle() {
         return title;
@@ -55,7 +50,6 @@ public final class BugReport {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("BugReport{");
-        sb.append("assignUserId=").append(assignUserId);
         sb.append(", title='").append(title).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", version='").append(version).append('\'');
