@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public final class BugReportBuilder {
-    private int assignUserId;
     private String title;
     private String description;
     private String version;
@@ -14,11 +13,6 @@ public final class BugReportBuilder {
 
     public BugReportBuilder() {
 
-    }
-
-    public BugReportBuilder assignUserId(int assignUserId) {
-        this.assignUserId = assignUserId;
-        return this;
     }
 
     public BugReportBuilder title(String title) {
@@ -61,7 +55,7 @@ public final class BugReportBuilder {
     }
 
     public BugReport build() {
-        return new BugReport(assignUserId, title, description, version, stacktrace, log, runtimeInfo);
+        return new BugReport(title, description, version, stacktrace, log, runtimeInfo);
     }
 
     private String escape(String str) {

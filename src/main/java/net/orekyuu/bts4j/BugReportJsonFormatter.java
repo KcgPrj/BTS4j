@@ -9,9 +9,6 @@ class BugReportJsonFormatter {
 
         StringBuilder builder = new StringBuilder("{");
         writeString("productToken", productToken, builder);
-        if (bugReport.getAssignUserId() != -1) {
-            writeNumber("assignUserId", bugReport.getAssignUserId(), builder);
-        }
         writeString("title", bugReport.getTitle() == null ? "" : bugReport.getTitle(), builder);
         writeString("description", bugReport.getDescription() == null ? "" : bugReport.getDescription(), builder);
         writeString("version", bugReport.getVersion() == null ? "" : bugReport.getVersion(), builder);
